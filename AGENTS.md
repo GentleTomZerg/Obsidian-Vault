@@ -19,8 +19,9 @@ Karpathy's frame, which this vault follows: the raw sources are the source of tr
 ## Layout
 
 ```
-raw/books/<slug>/         the real source file (EPUB, PDF) — untracked by git, read from here, never edited
-raw/<note>.md            small clipped articles and pasted quotes in markdown (tracked); no extracted-chapter dumps, no binaries
+raw/                    sources — gitignored wholesale, nothing under it is ever tracked
+raw/books/<slug>/         the real book file (EPUB, PDF) — read from here, never edited
+raw/<note>.md            small clipped articles and pasted quotes in markdown
 research/<topic>.md     /skill:research findings — vault-external sources read for a page, with exact quotes and locators; evidence, not a page
 wiki/books/<book>/         one folder per book — the book thread (navigational)
 wiki/books/<book>/<book>.md  work hub: thesis, chapter order, book-local questions
@@ -140,7 +141,7 @@ Two-axis, updated on every ingest — book threads first, integrated ideas secon
 ## Invariants
 
 1. Pass 1 is the human's — record it; never replace it.
-2. `raw/` holds sources, not notes. Big binaries live untracked in `raw/books/`; markdown in `raw/` is only for small clippings. Read sources; never edit them.
+2. `raw/` holds sources, not notes, and is gitignored wholesale — nothing under it is ever tracked or published. Read sources; never edit them.
 3. No page without a source behind it.
 4. Contradictions are flagged in place, never overwritten.
 5. Candidate questions and candidate tests are proposals; only accepted ones become work.

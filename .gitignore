@@ -7,6 +7,5 @@
 # Runtime logs — never part of the wiki
 logs/
 
-# Book binaries — the repo is public; only binaries live under raw/books/
-raw/books/**/*.epub
-raw/books/**/*.pdf
+# Sources — never tracked, never published. Books, clippings and dumps all live here.
+raw/
