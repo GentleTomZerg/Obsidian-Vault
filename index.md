@@ -5,7 +5,6 @@ publish: true
 
 <div class="avatar-hero">
   <video
-    id="avatarVideo"
     class="avatar-video"
     src="assets/avatar.mp4"
     poster="assets/avatar-poster.jpg"
@@ -47,29 +46,6 @@ publish: true
   background: #e8e3d5;
 }
 </style>
-
-<script>
-(function () {
-  // Decorative loop: honour reduced-motion by leaving the poster frame up.
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-
-  function playAvatar() {
-    var video = document.getElementById("avatarVideo")
-    if (!video) return
-    if (reduce) { video.pause(); return }
-    video.muted = true
-    video.play().catch(function () {})
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", playAvatar)
-  } else {
-    playAvatar()
-  }
-  // Quartz is an SPA: the node is re-created on client-side navigation.
-  document.addEventListener("nav", function () { setTimeout(playAvatar, 50) })
-})();
-</script>
 
 Hi, I'm Tom. I sketch, I read, and I write down what I find.
 
