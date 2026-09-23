@@ -1,0 +1,12 @@
+# Obsidian local state — unrelated to wiki content
+.obsidian/
+.trash/
+.DS_Store
+*.code-workspace
+
+# Runtime logs — never part of the wiki
+logs/
+
+# Book binaries — the repo is public; only binaries live under raw/books/
+raw/books/**/*.epub
+raw/books/**/*.pdf
