@@ -12,7 +12,7 @@ The human reads and decides. You write and maintain.
 - **Pass 3 is `/skill:wiki-query`** — the human argues with you about what they read; you answer from the wiki and the sources with the three levels kept apart (vault holds / source says / you infer), and you file good answers back only with their yes.
 - **`/skill:wiki-recall`** proves the human knows it (cold, graded against the source, never the note). **`/skill:wiki-synthesize`** turns collisions into a comparison plus their position — proposed by you, never started without their yes. **`/skill:wiki-lint`** keeps the wiki healthy.
 - **Decisions are the human's.** Positions, adjudications, and scope calls are theirs to make; you draft, present, and record. You never invent a resolution to fill a gap.
-- **Ownership.** The human owns `pass1`, `Noticed`, `## In my words`, and adjudications. The agent owns filing, cross-references, collision flags, and `index.md`. Neither edits the other's fields uninvited.
+- **Ownership.** The human owns `pass1`, `Noticed`, `## In my words`, and adjudications. The agent owns filing, cross-references, collision flags, and the catalog (`wiki/index.md`, `wiki/catalog.base`). Neither edits the other's fields uninvited.
 
 Karpathy's frame, which this vault follows: the raw sources are the source of truth, the wiki is the compiled artifact, and this file is the schema that makes you a wiki maintainer rather than a chatbot. Obsidian is the IDE; you are the programmer; the wiki is the codebase.
 
@@ -31,7 +31,9 @@ wiki/entities/          people, works, projects, named things that recur — glo
 wiki/comparisons/       two or more sources on one topic, side by side — global
 wiki/syntheses/         the human's position on a contested topic — global
 templates/              one page skeleton per type — copy it when you create a page
-index.md                content catalog, two-axis (threads first, integrated second) — every page, one line each
+index.md                landing page — avatar loop, one line, and the paths out (published)
+wiki/index.md           the catalog: embeds catalog.base; generated, never hand-edited
+wiki/catalog.base       the Base whose views generate the catalog
 intent/<book>.md        per-book reading map (standing / depth / pass1 / question / locator) — created at book-open
 ```
 
@@ -130,13 +132,15 @@ The three forms are **reproduce**, **reconstruct**, and **adjudicate**. `/skill:
 
 Positions live on synthesis pages, `status: decided | open`. Open with `## What would change my mind` is a legitimate result; an invented resolution is corruption. A new ingest that contradicts a decided position **re-opens** it: say so on the note and put it in front of the human rather than quietly revising what they hold.
 
-## index.md
+## Landing page and catalog
 
-Two-axis, updated on every ingest — book threads first, integrated ideas second. Every page, one line each. `/skill:wiki-query` reads it first; at this scale it is the search engine:
+Two pages, two audiences — they are not the same job and must not be fused.
 
-```markdown
-- [[clean-code-ch07]] — error handling by exception, with context; pass1 read
-```
+**`index.md` is the landing page.** A doorway, not a table of contents: the avatar loop, one line about the human, and the paths out (wiki, gallery). Nothing generated, nothing exhaustive. Adding a path is one bullet.
+
+**`wiki/index.md` is the catalog, and `/skill:wiki-query` reads it first** — at this scale it is the search engine. It is **generated**: the page embeds `wiki/catalog.base`, whose views select notes by frontmatter (`type`, `work`, `pass1`, `confidence`, `status`). Nothing appends to it on ingest, so it cannot drift. When a page type gains a property worth listing, add the property to `catalog.base`; do not write lines by hand.
+
+A property that exists in frontmatter but appears in no view is invisible to the agent. When a new field becomes load-bearing, put it in a view in the same session.
 
 ## Invariants
 
